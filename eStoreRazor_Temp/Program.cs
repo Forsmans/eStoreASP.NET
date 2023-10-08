@@ -1,3 +1,6 @@
+using eStoreRazor_Temp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace eStoreRazor_Temp
 {
     public class Program
@@ -8,6 +11,8 @@ namespace eStoreRazor_Temp
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
